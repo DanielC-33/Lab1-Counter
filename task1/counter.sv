@@ -8,7 +8,7 @@ module counter #(
     output  logic [WIDTH-1:0]   count   // count output 
 );
 
-always_ff @ (posedge clk) //this specifies a clocked circuit
+always_ff @ (posedge clk, posedge rst) //this specifies a clocked circuit. posedge rst is async reset.
 if(rst) count <= {WIDTH{1'b0}}; //Uses concatenation operator
 else    count <= count + {{WIDTH-1{1'b0}}, en}; 
 

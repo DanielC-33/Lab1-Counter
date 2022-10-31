@@ -28,12 +28,15 @@ int main(int argc, char **argv, char **env) {
         // dump variables into VCD file and toggle clock
         //vcd is "value change dump"
         for (clk=0; clk<2; clk++) { //clk goes 0,1,0,1...
-            tfp->dump (2*i+clk);//what is this? it goes 0,1,2,3,4
+            tfp->dump (2*i+clk);//what is this? it goes 0,1,2,3,4 - Every unit is a clk change, so each cycle is 2 units - in ps
             top->clk = !top->clk;
             top->eval (); //what does this do? Probably runs the actual systemverilog
         }
-        top->rst = (i<2) | (i == 15); //means rst=1 when i<2 or when i=15
-        top->en = (i>4); //en = 1 on this condition
+        top->rst = (i<2) || (i==18); //means rst=1 when i<2
+        top->en = (i>4) && (i<14) || (i>15); //en = 1 on this condition
+
+        //is there a way of getting the count value and comparing it to 9?
+
         if (Verilated::gotFinish()) exit(0);
     }
     tfp->close();
