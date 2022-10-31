@@ -1,1 +1,1 @@
-Create your design in this folder.
+For detailed description of the code of the testbench and verilog, look at the comments for the codes
