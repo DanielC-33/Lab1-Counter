@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "bit": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "algorithm": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "mutex": "cpp",
+        "ranges": "cpp",
+        "streambuf": "cpp",
+        "thread": "cpp"
     }
 }
