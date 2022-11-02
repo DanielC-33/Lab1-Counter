@@ -9,8 +9,9 @@ module counter #(
 );
 
 always_ff @ (posedge clk) //this specifies a clocked circuit
-if(rst) count <= {WIDTH{1'b0}}; //Uses concatenation operator
-else    count <= count + {{WIDTH-1{1'b0}}, en}; 
+    if(rst)     count <= {WIDTH{1'b0}}; //Uses concatenation operator
+    else if(en) count <= count + {{WIDTH-1{1'b0}}, 1'b1}; //concatenation is between (WIDTH-1) 0s and en 
+    else        count <= count - {{WIDTH-1{1'b0}}, 1'b1};
 
 endmodule
 
