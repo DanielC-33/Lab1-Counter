@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **env) {
     top->rst = 1;
     top->en = 0;
     
-    for (i=0; i<300; i++) { 
+    for (i=0; i<1000; i++) { 
 
         for (clk=0; clk<2; clk++) {
             tfp->dump (2*i+clk);
@@ -31,9 +31,7 @@ int main(int argc, char **argv, char **env) {
         }
 
         // ++++ Send count value to Vbuddy
-        vbdHex(4, (int(top->count) >> 16) & 0xF);
-        vbdHex(3, (int(top->count) >> 8) & 0xF);
-        vbdHex(2, (int(top->count) >> 4) & 0xF);
+        vbdPlot(int(top->count), 0, 255); //can use vbdPlot or vbdHex here (changing respective arguments)
         vbdCycle(i+1);
         // ---- end of Vbuddy output section
 
