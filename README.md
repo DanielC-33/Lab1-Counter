@@ -1,4 +1,5 @@
-Lab_1.md
+# These are some personal notes on the Lab tasks
+
+To see the notes for the individual tasks, go to the corresponding task folder.
 
 
-To see notes for each task, go to individual task folder.
