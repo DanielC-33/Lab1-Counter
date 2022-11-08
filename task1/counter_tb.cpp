@@ -20,6 +20,7 @@ int main(int argc, char **argv, char **env) {
     top->clk = 1; //starts on 1 because it changes to 0 line 32
     top->rst = 1;
     top->en = 0;
+    int cycles = 0;
     //so the DUT begins with these values, note en=0. 
 
     // run simulation for many clock cycles
@@ -32,8 +33,19 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval (); //what does this do? Probably runs the actual systemverilog
         }
-        top->rst = (i<2) || (i==18); //means rst=1 when i<2
-        top->en = (i>4) && (i<14) || (i>15); //en = 1 on this condition
+        top->rst = (i<2) || (i==20); //means rst=1 when i<2
+        top->en = (i>4); //en = 1 on this condition
+
+        if (int(top->count)==9 && cycles < 3){
+            cycles++;
+            top->en = 0;
+        }
+
+        if (cycles == 3){
+            cycles = 0;
+            top->en = 1;
+        }
+
 
         //is there a way of getting the count value and comparing it to 9?
 
